@@ -11,6 +11,8 @@ import { NotFoundComponent } from './not-found.component';
 import { UsersComponent } from './users.component';
 import { PostsComponent } from './posts.component';
 
+import { UserService } from './user.service';
+
 import { routing } from './app.routing';
 
 @NgModule({
@@ -28,7 +30,9 @@ import { routing } from './app.routing';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
