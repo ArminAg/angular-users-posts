@@ -24,6 +24,7 @@ export class UserFormComponent implements OnInit, IFormsComponent {
         private _activatedRoute: ActivatedRoute
     ) {
         this.form = fb.group({
+            id: [],
             name: ['', Validators.required],
             email: ['', EmailValidators.isValidEmail],
             phone: [],
@@ -37,11 +38,17 @@ export class UserFormComponent implements OnInit, IFormsComponent {
     }
 
     save() {
-        this._userService.addUser(this.form.value)
-            .subscribe(x => {
-                this.form.markAsPristine();
-                this._router.navigate(['users']);
-            });
+        var result;
+
+        if (this.user.id)
+            result = this._userService.updateUser(this.user);
+        else
+            result = this._userService.addUser(this.user);
+
+        result.subscribe(x => {
+            this.form.markAsPristine();
+            this._router.navigate(['users']);
+        });
     }
 
     hasUnsavedChanges() {
