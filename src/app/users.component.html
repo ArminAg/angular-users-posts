@@ -15,7 +15,7 @@
             <th scope="row">{{ user.name }}</th>
             <td>{{ user.email }}</td>
             <td><a [routerLink]="['/users', user.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-            <td><i class="fa fa-times" aria-hidden="true"></i></td>
+            <td><a (click)="deleteUser(user)" class="clickable"><i class="fa fa-times" aria-hidden="true"></i></a></td>
         </tr>
     </tbody>
 </table>

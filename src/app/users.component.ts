@@ -21,6 +21,21 @@ export class UsersComponent implements OnInit, OnDestroy {
         this._router.navigate(['users/new']);
     }
 
+    deleteUser(user) {
+        if (confirm("Are you sure you want to delete this User?")) {
+            var index = this.users.indexOf(user);
+            this.users.splice(index, 1);
+            this._userService.deleteUser(user.id)
+                .subscribe(
+                    null,
+                    error => {
+                        alert("Could not delete user.");
+                        this.users.splice(index, 0, user);
+                    }
+                );
+        }
+    }
+
     ngOnInit() {
         this.subscription = this._userService.getUsers()
             .subscribe(users => {
