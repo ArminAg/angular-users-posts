@@ -10,14 +10,19 @@ export class PostsComponent implements OnInit, OnDestroy {
     posts = [];
     subscription;
     isLoading = true;
+    commentsLoading;
     currentPost;
 
     constructor(private _postService: PostService) { }
 
     select(post) {
         this.currentPost = post;
+        this.commentsLoading = true;
         this._postService.getPostComments(post.id)
-            .subscribe(comments => this.currentPost.comments = comments);
+            .subscribe(
+            comments => this.currentPost.comments = comments,
+            null,
+            () => { this.commentsLoading = false; });
     }
 
     ngOnInit() {
