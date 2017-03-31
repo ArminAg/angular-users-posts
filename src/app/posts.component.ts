@@ -16,6 +16,8 @@ export class PostsComponent implements OnInit, OnDestroy {
 
     select(post) {
         this.currentPost = post;
+        this._postService.getPostComments(post.id)
+            .subscribe(comments => this.currentPost.comments = comments);
     }
 
     ngOnInit() {
