@@ -9,7 +9,7 @@ import { PostService } from './post.service';
 export class PostsComponent implements OnInit, OnDestroy {
     posts = [];
     subscription;
-    isLoading = true;
+    postsLoading = true;
     commentsLoading;
     currentPost;
 
@@ -30,7 +30,7 @@ export class PostsComponent implements OnInit, OnDestroy {
             .subscribe(
             posts => this.posts = posts,
             null,
-            () => { this.isLoading = false; });
+            () => { this.postsLoading = false; });
     }
 
     ngOnDestroy() {

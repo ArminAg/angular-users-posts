@@ -1,5 +1,5 @@
 <h2>Posts</h2>
-<spinner [visible]="isLoading"></spinner>
+<spinner [visible]="postsLoading"></spinner>
 <div class="row">
     <div class="col-6">
         <ul class="list-group">
@@ -16,7 +16,7 @@
             <div class="card-block">
                 <p class="card-text">{{ currentPost.body }}</p>
                 <hr />
-                <spinner [visible]="isLoadingComments"></spinner>
+                <spinner [visible]="commentsLoading"></spinner>
                 <div class="media mb-3" *ngFor="let comment of currentPost.comments">
                     <img class="d-flex mr-3 avatar" src="http://lorempixel.com/80/80/people?random={{ comment.id }}" alt="profile">
                     <div class="media-body">
