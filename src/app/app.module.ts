@@ -15,6 +15,7 @@ import { UserFormComponent } from './user-form.component';
 import { UserService } from './user.service';
 import { PostService } from './post.service';
 import { PreventUnsavedChangesGuard } from './prevent-unsaved-changes-guard.service';
+import { SpinnerComponent } from './spinner.component';
 
 import { routing } from './app.routing';
 
@@ -26,7 +27,8 @@ import { routing } from './app.routing';
     NotFoundComponent,
     UsersComponent,
     UserFormComponent,
-    PostsComponent
+    PostsComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
