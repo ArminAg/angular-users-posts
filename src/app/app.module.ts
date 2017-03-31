@@ -13,6 +13,7 @@ import { PostsComponent } from './posts.component';
 import { UserFormComponent } from './user-form.component';
 
 import { UserService } from './user.service';
+import { PreventUnsavedChangesGuard } from './prevent-unsaved-changes-guard.service';
 
 import { routing } from './app.routing';
 
@@ -34,7 +35,8 @@ import { routing } from './app.routing';
     routing
   ],
   providers: [
-    UserService
+    UserService,
+    PreventUnsavedChangesGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidators } from './email-validators';
+import { IFormsComponent } from './prevent-unsaved-changes-guard.service';
 
 @Component({
     moduleId: module.id,
@@ -8,7 +9,7 @@ import { EmailValidators } from './email-validators';
     templateUrl: 'user-form.component.html'
 })
 
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, IFormsComponent {
     form: FormGroup;
 
     constructor(fb: FormBuilder) { 
@@ -23,6 +24,10 @@ export class UserFormComponent implements OnInit {
                 zipCode: []
             })
         });
+    }
+
+    hasUnsavedChanges(){
+        return this.form.dirty;
     }
 
     ngOnInit() { }
