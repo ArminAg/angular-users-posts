@@ -13,4 +13,13 @@ export class PostService {
         return this._http.get(this._url)
             .map(res => res.json());
     }
+
+    getPost(id: number) {
+        return this._http.get(this.getPostUrl(id))
+            .map(res => res.json());
+    }
+
+    private getPostUrl(postId) {
+        return this._url + "/" + postId;
+    }
 }

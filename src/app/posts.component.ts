@@ -7,11 +7,16 @@ import { PostService } from './post.service';
 })
 
 export class PostsComponent implements OnInit, OnDestroy {
-    posts;
+    posts = [];
     subscription;
     isLoading = true;
+    currentPost;
 
     constructor(private _postService: PostService) { }
+
+    select(post) {
+        this.currentPost = post;
+    }
 
     ngOnInit() {
         this.subscription = this._postService.getPosts()
