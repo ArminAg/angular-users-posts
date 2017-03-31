@@ -11,11 +11,12 @@ import { PreventUnsavedChangesGuard } from './prevent-unsaved-changes-guard.serv
 export const routing = RouterModule.forRoot([
     { path: '', component: HomeComponent },
     { path: 'users', component: UsersComponent },
-    { 
-        path: 'users/new', 
+    {
+        path: 'users/new',
         component: UserFormComponent,
         canDeactivate: [PreventUnsavedChangesGuard]
-     },
+    },
+    { path: 'users/:id', component: UserFormComponent },
     { path: 'posts', component: PostsComponent },
     { path: '**', component: NotFoundComponent }
 ]);

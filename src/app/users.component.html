@@ -14,7 +14,7 @@
         <tr *ngFor="let user of users">
             <th scope="row">{{ user.name }}</th>
             <td>{{ user.email }}</td>
-            <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
+            <td><a [routerLink]="['/users', user.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
             <td><i class="fa fa-times" aria-hidden="true"></i></td>
         </tr>
     </tbody>

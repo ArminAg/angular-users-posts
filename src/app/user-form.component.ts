@@ -1,23 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidators } from './email-validators';
 import { IFormsComponent } from './prevent-unsaved-changes-guard.service';
 import { UserService } from './user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { User } from './user';
 
 @Component({
-    moduleId: module.id,
     selector: 'user-form',
     templateUrl: 'user-form.component.html'
 })
 
 export class UserFormComponent implements OnInit, IFormsComponent {
+    title;
     form: FormGroup;
+    user = new User();
+    subscription;
 
     constructor(
         fb: FormBuilder,
         private _userService: UserService,
-        private _router: Router
+        private _router: Router,
+        private _activatedRoute: ActivatedRoute
     ) {
         this.form = fb.group({
             name: ['', Validators.required],
@@ -44,5 +48,25 @@ export class UserFormComponent implements OnInit, IFormsComponent {
         return this.form.dirty;
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.subscription = this._activatedRoute.params.subscribe(params => {
+            var id = params["id"];
+            this.title = id ? "Edit User" : "Add User";
+
+            if (!id)
+                return;
+
+            this._userService.getUser(id)
+                .subscribe(
+                user => this.user = user,
+                response => {
+                    if (response.status == 404)
+                        this._router.navigate(['not-found']);
+                });
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 }
