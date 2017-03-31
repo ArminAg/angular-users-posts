@@ -1,7 +1,14 @@
 <h2>Posts</h2>
-<spinner [visible]="postsLoading"></spinner>
+
 <div class="row">
     <div class="col-6">
+        <div class="form-group">
+            <select class="form-control" id="selectUser" (change)="reloadPosts({ userId: u.value })" #u>
+                <option value="">Select User...</option>
+                <option *ngFor="let user of users" value="{{ user.id }}">{{ user.name }}</option>
+            </select>
+        </div>
+        <spinner [visible]="postsLoading"></spinner>
         <ul class="list-group">
             <button (click)="select(post)" class="list-group-item list-group-item-action" [class.active]="currentPost == post" *ngFor="let post of posts">
                 {{ post.title }}
