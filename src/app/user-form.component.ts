@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidators } from './email-validators';
 
 @Component({
     moduleId: module.id,
@@ -12,8 +13,8 @@ export class UserFormComponent implements OnInit {
 
     constructor(fb: FormBuilder) { 
         this.form = fb.group({
-            name: [],
-            email: [],
+            name: ['', Validators.required],
+            email: ['', EmailValidators.isValidEmail],
             phone: [],
             address: fb.group({
                 street: [],

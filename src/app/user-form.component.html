@@ -7,10 +7,14 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" class="form-control" formControlName="name">
+                <div class="alert alert-danger" *ngIf="form.controls.name.touched && !form.controls.name.valid">Name is required.</div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" name="email" class="form-control" formControlName="email">
+                <div *ngIf="form.controls.email.touched && form.controls.email.errors">
+                    <div class="alert alert-danger" *ngIf="form.controls.email.errors.isValidEmail">Please enter valid email.</div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="phone">Phone</label>
@@ -37,6 +41,6 @@
                 <input type="text" name="zipCode" class="form-control" formControlName="zipCode">
             </div>
         </fieldset>
-        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Save</button>
     </form>
 </div>
