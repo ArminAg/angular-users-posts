@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'users',
@@ -11,7 +12,14 @@ export class UsersComponent implements OnInit, OnDestroy {
     subscription;
     isLoading = true;
 
-    constructor(private _userService: UserService) { }
+    constructor(
+        private _userService: UserService,
+        private _router: Router
+    ) { }
+
+    newUser() {
+        this._router.navigate(['users/new']);
+    }
 
     ngOnInit() {
         this.subscription = this._userService.getUsers()

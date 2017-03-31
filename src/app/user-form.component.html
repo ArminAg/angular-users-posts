@@ -1,0 +1,42 @@
+<h2>Add a User</h2>
+
+<div class="row">
+    <form class="col-6 bg-faded" [formGroup]="form">
+        <fieldset class="form-group">
+            <legend>User</legend>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" formControlName="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" class="form-control" formControlName="phone">
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group" formGroupName="address">
+            <legend>Address</legend>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" name="street" class="form-control" formControlName="street">
+            </div>
+            <div class="form-group">
+                <label for="suite">Suite</label>
+                <input type="text" name="suite" class="form-control" formControlName="suite">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" name="city" class="form-control" formControlName="city">
+            </div>
+            <div class="form-group">
+                <label for="zipCode">ZipCode</label>
+                <input type="text" name="zipCode" class="form-control" formControlName="zipCode">
+            </div>
+        </fieldset>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+</div>
