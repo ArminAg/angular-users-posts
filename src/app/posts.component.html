@@ -9,8 +9,9 @@
             </select>
         </div>
         <spinner [visible]="postsLoading"></spinner>
+        <pagination [items]="posts" (page-changed)="onPageChanged($event)"></pagination>
         <ul class="list-group">
-            <button (click)="select(post)" class="list-group-item list-group-item-action" [class.active]="currentPost == post" *ngFor="let post of posts">
+            <button (click)="select(post)" class="list-group-item list-group-item-action" [class.active]="currentPost == post" *ngFor="let post of pagedPosts">
                 {{ post.title }}
             </button>
         </ul>

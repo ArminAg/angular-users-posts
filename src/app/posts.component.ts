@@ -9,6 +9,8 @@ import { UserService } from './user.service';
 
 export class PostsComponent implements OnInit, OnDestroy {
     posts = [];
+    pagedPosts = [];
+    pageSize = 10;
     users = [];
     subscription;
     postsLoading;
@@ -45,14 +47,32 @@ export class PostsComponent implements OnInit, OnDestroy {
 
         this.subscription = this._postService.getPosts(filter)
             .subscribe(
-            posts => this.posts = posts,
+            posts => {
+                this.posts = posts;
+                this.pagedPosts = this.getPostsInPage(1);
+            },
             null,
             () => { this.postsLoading = false; });
     }
 
-    private loadUsers(){
+    private getPostsInPage(page) {
+        var result = [];
+        var startingIndex = (page - 1) * this.pageSize;
+        var endIndex = Math.min(startingIndex + this.pageSize, this.posts.length);
+
+        for (var i = startingIndex; i < endIndex; i++)
+            result.push(this.posts[i]);
+
+        return result;
+    }
+
+    private loadUsers() {
         this._userService.getUsers()
             .subscribe(users => this.users = users);
+    }
+
+    onPageChanged(page) {
+        this.pagedPosts = this.getPostsInPage(page);
     }
 
     ngOnDestroy() {
