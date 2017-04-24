@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EmailValidators } from './email-validators';
-import { IFormsComponent } from './prevent-unsaved-changes-guard.service';
+import { EmailValidators } from '../shared/email-validators';
+import { IFormsComponent } from '../shared/prevent-unsaved-changes-guard.service';
 import { UserService } from './user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from './user';

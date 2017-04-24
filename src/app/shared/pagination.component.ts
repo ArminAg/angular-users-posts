@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
     selector: 'pagination',
     templateUrl: 'pagination.component.html'
 })

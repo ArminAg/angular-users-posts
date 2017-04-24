@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PostService } from './post.service';
-import { UserService } from './user.service';
+import { UserService } from '../users/user.service';
 import * as _ from 'underscore';
 
 @Component({
