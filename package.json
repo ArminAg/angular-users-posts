@@ -1,6 +1,6 @@
 {
-  "name": "apple",
-  "version": "0.0.0",
+  "name": "angular-users-posts",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -20,8 +20,12 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@types/underscore": "^1.8.0",
+    "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.4.1",
+    "font-awesome": "4.7.0",
     "rxjs": "^5.1.0",
+    "underscore": "^1.8.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
