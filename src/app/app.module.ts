@@ -11,6 +11,8 @@ import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
 
 import { routing } from './app.routing';
+import { postsRouting } from './posts/posts.routing';
+import { usersRouting } from './users/users.routing';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { routing } from './app.routing';
     HttpModule,
     PostsModule,
     UsersModule,
+    postsRouting,
+    usersRouting,
     routing
   ],
   bootstrap: [AppComponent]
